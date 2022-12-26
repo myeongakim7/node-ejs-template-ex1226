@@ -2,5 +2,24 @@
   <a href="/">home</a> |
   <a href="/about">about</a> |
   <a href="/product">product</a> |
-  <a href="/admin">admin</a>
+  <!-- <a onclick="alert('로그인 check');" href="/admin">admin</a> -->
+  <a onclick="isAdmin('<%= admin.id %>'); return false;" href="/admin">admin</a>
+  <!-- admin 들어갔을 때  -->
+  <!-- onclick , href 겹침 => href 주소를 명시해야해서 없앨 순 없음  -->
 </nav>
+
+<script>
+  // 관리자 확인(id, pwd)
+  function isAdmin(id) {
+    const inputId = prompt('관리자 id 입력');
+    if (inputId === id) {
+      console.log('관리자가 맞습니다');
+      location.href = "/admin";
+    } else {
+      alert('아이디가 틀립니다');
+    }
+
+    // 뒤에 있는 기본 이벤트 (위에서 a 동작금지) 취소
+  } // id=pswd 같아야 함 
+</script>
+<!-- 클라이언트O(프론트엔드) / 서버x  -->
